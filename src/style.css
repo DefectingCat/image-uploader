@@ -1,0 +1,125 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+.upload {
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 10px;
+}
+.target {
+  width: 800px;
+  height: 250px;
+  border: 1px dashed rgb(201, 201, 201);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px;
+  padding: 16px 8px;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.split {
+  margin: 0 6px;
+}
+.input-box {
+  position: relative;
+}
+.upload-text {
+  color: aqua;
+}
+.upload-btn {
+  position: absolute;
+  opacity: 0;
+  max-width: 100%;
+  left: 0;
+  top: 0;
+}
+.model-text {
+  display: none;
+}
+.place-text {
+  display: flex;
+}
+.show {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.show-img {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  padding: 6px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+  height: 100%;
+  margin: 0 2px;
+}
+.img-wrapper {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.upload-img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+.img-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: rgb(165, 165, 165);
+  height: 60px;
+}
+.img-name span {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.change-box {
+  justify-content: flex-start;
+}
+input[type=file], /* FF, IE7+, chrome (except button) */
+input[type=file]::-webkit-file-upload-button {
+  /* chromes and blink button */
+  cursor: pointer;
+}
+
+.target-upload {
+  background-color: rgb(222 222 222);
+  border: 2px dashed rgb(165 165 165);
+  border-radius: 10px;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.file-list {
+  margin-top: 40px;
+}
