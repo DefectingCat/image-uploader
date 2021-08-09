@@ -1,10 +1,8 @@
 "use strict";
 const box = document.querySelector('.target');
 const placeHolder = document.querySelector('.place-text');
-const dropText = document.querySelector('.model-text');
 const imgWrapper = document.querySelector('.show-img');
 const btn = document.querySelector('.upload-btn');
-const imgWrappers = [];
 const urls = [];
 const changeBoxBackgroud = (set = true) => {
     if (set) {

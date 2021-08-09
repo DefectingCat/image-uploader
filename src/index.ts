@@ -1,12 +1,9 @@
 const box = document.querySelector<HTMLDivElement>('.target');
 const placeHolder = document.querySelector<HTMLDivElement>('.place-text');
-const dropText = document.querySelector<HTMLDivElement>('.model-text');
 const imgWrapper = document.querySelector<HTMLDivElement>('.show-img');
 
 /* */
 const btn = document.querySelector<HTMLInputElement>('.upload-btn');
-
-const imgWrappers = [];
 
 const urls: string[] = [];
 
