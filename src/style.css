@@ -60,6 +60,7 @@
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
   height: 100%;
   margin: 0 2px;
+  background: #fdfdfd;
 }
 .img-wrapper {
   width: 150px;
@@ -122,4 +123,20 @@ input[type=file]::-webkit-file-upload-button {
 
 .file-list {
   margin-top: 40px;
+}
+
+.to-upload {
+  margin-top: 40px;
+}
+.to-upload button {
+  width: 80px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #c3c3c3;
+  background: #fdfdfd;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px 0px #cccccc;
+}
+.to-upload button:active {
+  box-shadow: none;
 }

@@ -1,11 +1,14 @@
 const box = document.querySelector<HTMLDivElement>('.target');
 const placeHolder = document.querySelector<HTMLDivElement>('.place-text');
 const imgWrapper = document.querySelector<HTMLDivElement>('.show-img');
+const uploadBtn =
+  document.querySelector<HTMLButtonElement>('.to-upload button');
 
 /* */
 const btn = document.querySelector<HTMLInputElement>('.upload-btn');
 
 const urls: string[] = [];
+let form: FormData | null;
 
 /**
  * 更改元素样式列表
@@ -72,16 +75,41 @@ const showUploadImg = (url: string, name: string, set = true) => {
  * @param files
  */
 const applyImg = (files: FileList) => {
+  form = new FormData();
   for (const file of files) {
     // 创建 blob url
     const url = window.URL.createObjectURL(file);
     urls.push(url);
+    // 添加到 FormData
+    form.append('file', file);
     showUploadImg(url, file.name);
   }
 };
 
+/**
+ * 该函数用于释放 blob url 的引用
+ */
+const revokeUrl = () => {
+  for (const url of urls) {
+    window.URL.revokeObjectURL(url);
+  }
+};
+
+/**
+ * 上传完成后恢复原样
+ */
+const cleanAll = () => {
+  const backup = document.querySelector<HTMLDivElement>('.place-text.hidden');
+  if (backup) {
+    console.log(backup);
+    backup.classList.remove('hidden');
+    box?.replaceChildren(backup);
+    changeBox(false); // 恢复布局
+    revokeUrl(); // 解除引用
+  }
+};
+
 const handleDarg = (e: DragEvent) => {
-  console.log(e.type);
   const type = e.type;
   switch (type) {
     case 'dragenter':
@@ -132,4 +160,43 @@ const handChange = (e: HTMLInputEvent) => {
 
 btn?.addEventListener('change', handChange as EventListener);
 
-/* ----------- */
+/* ------ upload ----- */
+interface fileRes {
+  fileName: string;
+  status: 'ok';
+  url: string;
+}
+
+const list = document.querySelector('.file-list');
+const createList = (result: fileRes[]) => {
+  const ul = document.createElement('ul');
+  for (const item of result) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    li.textContent = 'Url: ';
+    a.href = item.url;
+    a.textContent = item.url;
+    li.append(a);
+    ul.append(li);
+  }
+  list?.replaceChildren(ul);
+};
+
+/**
+ * 发送网络请求
+ * 上传图片
+ */
+const sendPost = async () => {
+  const response = await fetch('http://127.0.0.1:4000/upload', {
+    method: 'POST',
+    body: form,
+  });
+  const result: fileRes[] = await response.json();
+  cleanAll();
+  createList(result);
+  form = null;
+};
+
+uploadBtn?.addEventListener('click', () => {
+  form ? sendPost() : void 0;
+});

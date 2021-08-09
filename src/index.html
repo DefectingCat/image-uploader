@@ -26,24 +26,41 @@
       </div>
     </div>
 
+    <div class="to-upload">
+      <button>发射🚀</button>
+    </div>
+
     <div class="file-list">
       test
     </div>
 
-    <div class="show-img hidden">
-      <div class="img-wrapper">
-        <img src="./black-cat-green-eyes-close-up.jpg" alt="" class="upload-img">
-      </div>
+  </div>
 
-      <div class="img-name">
-        <span>这是文件名</span>
-      </div>
-      <div class="img-tool">
-        test
-      </div>
+  <!-- 这里是备用的 DOM -->
+  <!-- 这是展示图片的 DOM 结构 -->
+  <div class="show-img hidden">
+    <div class="img-wrapper">
+      <img src="./black-cat-green-eyes-close-up.jpg" alt="" class="upload-img">
     </div>
 
+    <div class="img-name">
+      <span>这是文件名</span>
+    </div>
+    <div class="img-tool">
+      test
+    </div>
   </div>
+
+  <!-- 这是整个上传框的 DOM 结构 -->
+  <div class="place-text hidden">
+    <span>拖拽到此处</span>
+    <span class="split">或</span>
+    <div class="input-box">
+      <span class="upload-text">点击上传</span>
+      <input type="file" multiple class="upload-btn" placeholder="test">
+    </div>
+  </div>
+
 </body>
 <script src="index.js"></script>
 
